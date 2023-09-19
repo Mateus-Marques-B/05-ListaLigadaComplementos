@@ -157,7 +157,7 @@ void excluirElemento()
 	NO* aux = primeiro;
 
 	while (aux != NULL) {
-		if (aux->valor == exc && aux != NULL) {	
+		if (aux->valor == exc && anterior != NULL) {	
 			anterior->prox = aux->prox;
 			
 		else {

@@ -8,7 +8,7 @@ struct NO {
 };
 
 NO* primeiro = NULL;
-NO* ultimo = NULL;
+NO* anterior = NULL;
 
 // headers
 void menu();
@@ -71,7 +71,7 @@ void menu()
 
 void inicializar()
 {
-	// se a lista j· possuir elementos
+	// se a lista j√° possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -149,12 +149,54 @@ void inserirElemento()
 
 void excluirElemento()
 {
+	int exc;
+	cout << "Digite o elemento que deseja excluir: ";
+	cin >> exc;
+
+	NO* anterior = NULL;
+	NO* aux = primeiro;
+
+	while (aux != NULL) {
+		if (aux->valor == exc && aux != NULL) {	
+			anterior->prox = aux->prox;
+			
+		else {
+				primeiro = aux->prox;
+		}
+
+			cout << "Elemento " << elemento << " deletado! \n";
+
+			free(aux); 
+			return;
+		}
+
+		anterior = aux;
+		aux = aux->prox;
+	}
+
+	cout << "Elemento nao encontrado! \n";
+}
 
 }
 
 void buscarElemento()
 {
+	int busca;
+	cout << "Digite o elemento que deseja buscar: ";
+	cin >> busca;
+	NO* aux = primeiro;
 	
+	while (aux != NULL) {
+		if (aux->valor == busca) {
+			cout << aux->valor << " encontrado \n";
+			break;
+		}
+		aux = aux->prox;
+
+
+	}
+	if (aux == NULL) {
+		cout << "Elemento nao encontrado! \n";
+	}
+
 }
-
-
